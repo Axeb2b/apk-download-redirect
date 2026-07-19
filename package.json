@@ -1,0 +1,22 @@
+{
+  "name": "apk-download-redirect",
+  "version": "1.0.0",
+  "description": "Secure APK download with bot blocking & rate limiting",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["bot-blocking", "rate-limit", "redirect"],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-rate-limit": "^6.7.0",
+    "dotenv": "^16.0.3",
+    "axios": "^1.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
