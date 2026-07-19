@@ -3,238 +3,720 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextGen mParivahan - Download</title>
+    <title>NextGen mParivahan - Official Download</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        
-        .container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            padding: 40px;
-            max-width: 500px;
-            text-align: center;
-        }
-        
-        .logo {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        
-        h1 {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
             color: #333;
-            margin-bottom: 10px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: white;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .logo-icon {
             font-size: 28px;
         }
-        
-        .version {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 30px;
-        }
-        
-        .info-box {
-            background: #f0f4ff;
-            border-left: 4px solid #667eea;
-            padding: 15px;
-            margin-bottom: 30px;
-            text-align: left;
-            border-radius: 8px;
-        }
-        
-        .info-box ul {
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
             list-style: none;
-            color: #555;
-            font-size: 14px;
         }
-        
-        .info-box li {
-            margin: 8px 0;
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            padding: 60px 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #1e3a8a;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .features-list li {
+            margin: 12px 0;
             display: flex;
             align-items: center;
-        }
-        
-        .info-box li:before {
-            content: "✓";
-            color: #667eea;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-        
-        .download-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 15px 40px;
+            gap: 12px;
             font-size: 16px;
+            color: #444;
+        }
+
+        .features-list li:before {
+            content: "✓";
+            font-size: 20px;
+            color: #10b981;
             font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            width: 100%;
-            margin-bottom: 15px;
         }
-        
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
         }
-        
-        .download-btn:active {
-            transform: translateY(0);
+
+        .stars {
+            color: #f59e0b;
+            font-size: 14px;
         }
-        
-        .security-info {
-            background: #fffbf0;
-            border: 1px solid #ffd699;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-            font-size: 13px;
+
+        .rating-text {
             color: #666;
+            font-size: 14px;
         }
-        
-        .spinner {
-            display: none;
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #667eea;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1e3a8a;
+            border: 2px solid #1e3a8a;
+        }
+
+        .btn-secondary:hover {
+            background: #f0f4ff;
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .phone-mockup {
+            position: relative;
+            width: 280px;
+            height: 560px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            border-radius: 40px;
+            padding: 12px;
+            margin: 0 auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .app-icon {
+            font-size: 80px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+        }
+
+        .phone-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+
+        /* ===== FEATURES SECTION ===== */
+        .features {
+            background: white;
+            padding: 80px 20px;
+            margin-top: 60px;
+        }
+
+        .features-container {
+            max-width: 1200px;
             margin: 0 auto;
         }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+            color: #1e3a8a;
         }
-        
-        .status-message {
-            margin-top: 20px;
-            padding: 10px;
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            padding: 30px;
+            background: #f9fafb;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: white;
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #1e3a8a;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* ===== SPECS SECTION ===== */
+        .specs {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .specs-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .spec-item {
+            padding: 20px;
+        }
+
+        .spec-number {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .spec-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* ===== DOWNLOAD SECTION ===== */
+        .download-section {
+            background: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .download-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .download-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #1e3a8a;
+        }
+
+        .download-subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
             border-radius: 8px;
+            text-align: left;
+            margin-bottom: 30px;
+            font-size: 14px;
+            color: #92400e;
+        }
+
+        .warning-box strong {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin: 8px 0;
+        }
+
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 20px;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 40px 20px;
+                gap: 30px;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .phone-mockup {
+                width: 240px;
+                height: 480px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* ===== LOADING SPINNER ===== */
+        .spinner {
             display: none;
-            font-weight: 600;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-left: 10px;
         }
-        
-        .status-success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
-        
-        .status-error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+
+        .btn.loading {
+            opacity: 0.8;
+            pointer-events: none;
         }
-        
-        .file-size {
-            color: #999;
-            font-size: 13px;
-            margin-top: 10px;
+
+        /* ===== STATUS MESSAGE ===== */
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .status.success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+
+        .status.error {
+            background: #fee2e2;
+            color: #7f1d1d;
+            border: 1px solid #fecaca;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">📱</div>
-        
-        <h1>NextGen mParivahan</h1>
-        <p class="version">Version 2.3.5</p>
-        
-        <div class="info-box">
-            <ul>
-                <li>✨ New features & bug fixes</li>
-                <li>⚡ Performance improvements</li>
-                <li>🔒 Secure & verified download</li>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">🚗</span>
+                <span>NextGen mParivahan</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#download">Download</a></li>
+                <li><a href="#specs">Specs</a></li>
             </ul>
         </div>
-        
-        <div>
-            <button class="download-btn" id="downloadBtn" onclick="initiateDownload()">
-                <span id="btnText">📥 Download APK</span>
-                <div class="spinner" id="spinner"></div>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>NextGen mParivahan</h1>
+            <p>Official app from National Informatics Centre for vehicle registration & documentation.</p>
+
+            <div class="rating">
+                <span class="stars">⭐⭐⭐⭐⭐ 4.8</span>
+                <span class="rating-text">711K+ Reviews</span>
+            </div>
+
+            <ul class="features-list">
+                <li>✨ Fast & Secure Download</li>
+                <li>🔐 Official & Verified</li>
+                <li>⚡ Latest Version v2.3.5</li>
+                <li>📱 Compatible with Android 3+</li>
+                <li>🛡️ Bot Protected</li>
+            </ul>
+
+            <div class="cta-buttons">
+                <button class="btn btn-primary" id="downloadBtn" onclick="initiateDownload()">
+                    📥 Download Now
+                    <span class="spinner" id="spinner"></span>
+                </button>
+                <button class="btn btn-secondary" onclick="document.getElementById('specs').scrollIntoView({behavior: 'smooth'})">
+                    Learn More
+                </button>
+            </div>
+
+            <div class="status" id="status"></div>
+        </div>
+
+        <div class="hero-image">
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <div class="app-icon">🚗</div>
+                    <div class="phone-title">mParivahan</div>
+                    <p style="font-size: 12px; color: #999;">National Informatics Centre.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURES SECTION ===== -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <h2 class="section-title">Why Choose NextGen mParivahan?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📄</div>
+                    <h3>Digital Documents</h3>
+                    <p>Access your vehicle documents digitally from anywhere, anytime.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure & Verified</h3>
+                    <p>Official app with end-to-end encryption for your data security.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Fast Downloads</h3>
+                    <p>Quick and seamless document access with zero delays.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Easy to Use</h3>
+                    <p>User-friendly interface designed for everyone.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Bot Protection</h3>
+                    <p>Advanced anti-bot technology for secure downloads.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Real-time Updates</h3>
+                    <p>Stay updated with latest vehicle information and notifications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SPECS SECTION ===== -->
+    <section class="specs" id="specs">
+        <div class="specs-container">
+            <h2 class="section-title" style="color: white;">App Specifications</h2>
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <div class="spec-number">v2.3.5</div>
+                    <div class="spec-label">Latest Version</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-number">11.5 MB</div>
+                    <div class="spec-label">File Size</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-number">3+</div>
+                    <div class="spec-label">Min Android</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-number">711K+</div>
+                    <div class="spec-label">Total Reviews</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DOWNLOAD SECTION ===== -->
+    <section class="download-section" id="download">
+        <div class="download-container">
+            <h2 class="download-title">Ready to Download?</h2>
+            <p class="download-subtitle">Get instant access to your vehicle documents</p>
+
+            <div class="warning-box">
+                <strong>⚠️ Important Information</strong>
+                Only 1 download per IP per 24 hours.<br>
+                Do NOT share direct download links.<br>
+                Bot access is automatically blocked.
+            </div>
+
+            <button class="btn btn-primary" id="downloadBtn2" onclick="initiateDownload()" style="width: 100%;">
+                📥 Download APK Now
+                <span class="spinner" id="spinner2"></span>
             </button>
-            <p class="file-size">📦 11.5 MB</p>
         </div>
-        
-        <div class="status-message" id="statusMessage"></div>
-        
-        <div class="security-info">
-            ⚠️ <strong>Important:</strong><br>
-            • Only 1 download per IP per 24 hours<br>
-            • Do NOT share direct links<br>
-            • Bot access is automatically blocked<br>
-            • Your download is being tracked
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">About NextGen</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Specs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Security</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-    
+        <div class="footer-bottom">
+            <p>&copy; 2026 NextGen mParivahan. All rights reserved. | Official App by National Informatics Centre</p>
+        </div>
+    </footer>
+
     <script>
         async function initiateDownload() {
-            const btn = document.getElementById('downloadBtn');
-            const btnText = document.getElementById('btnText');
-            const spinner = document.getElementById('spinner');
-            const statusMessage = document.getElementById('statusMessage');
-            
-            // Disable button
-            btn.disabled = true;
-            btnText.style.display = 'none';
-            spinner.style.display = 'block';
-            statusMessage.style.display = 'none';
-            
+            const btns = [
+                document.getElementById('downloadBtn'),
+                document.getElementById('downloadBtn2')
+            ];
+            const spinners = [
+                document.getElementById('spinner'),
+                document.getElementById('spinner2')
+            ];
+            const status = document.getElementById('status');
+
+            // Disable buttons
+            btns.forEach(btn => {
+                btn.classList.add('loading');
+                btn.disabled = true;
+            });
+
+            spinners.forEach(spinner => {
+                spinner.style.display = 'inline-block';
+            });
+
+            status.style.display = 'none';
+
             try {
-                // Call API endpoint
                 const response = await fetch('/download');
                 const data = await response.json();
-                
+
                 if (response.ok) {
-                    // Success
-                    statusMessage.className = 'status-message status-success';
-                    statusMessage.textContent = '✅ ' + data.message;
-                    statusMessage.style.display = 'block';
-                    
-                    // Redirect after 1 second
+                    // Success - redirect
+                    status.className = 'status success';
+                    status.textContent = '✅ Redirecting to download...';
+                    status.style.display = 'block';
+
                     setTimeout(() => {
                         window.location.href = data.download_url;
-                    }, 1000);
+                    }, 1500);
                 } else {
                     // Error
-                    statusMessage.className = 'status-message status-error';
-                    statusMessage.textContent = data.error || 'Download failed!';
-                    statusMessage.style.display = 'block';
-                    
-                    // Re-enable button
-                    btn.disabled = false;
-                    btnText.style.display = 'block';
-                    spinner.style.display = 'none';
+                    status.className = 'status error';
+                    status.textContent = '❌ ' + (data.error || 'Download failed!');
+                    status.style.display = 'block';
+
+                    // Re-enable buttons
+                    btns.forEach(btn => {
+                        btn.classList.remove('loading');
+                        btn.disabled = false;
+                    });
+                    spinners.forEach(spinner => {
+                        spinner.style.display = 'none';
+                    });
                 }
             } catch (error) {
-                // Network error
-                statusMessage.className = 'status-message status-error';
-                statusMessage.textContent = '❌ Network error. Please try again.';
-                statusMessage.style.display = 'block';
-                
-                btn.disabled = false;
-                btnText.style.display = 'block';
-                spinner.style.display = 'none';
+                status.className = 'status error';
+                status.textContent = '❌ Network error. Please try again.';
+                status.style.display = 'block';
+
+                btns.forEach(btn => {
+                    btn.classList.remove('loading');
+                    btn.disabled = false;
+                });
+                spinners.forEach(spinner => {
+                    spinner.style.display = 'none';
+                });
             }
         }
     </script>
+
 </body>
 </html>
