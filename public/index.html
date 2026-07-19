@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextGen mParivahan - Download</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 500px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .version {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        
+        .info-box {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 30px;
+            text-align: left;
+            border-radius: 8px;
+        }
+        
+        .info-box ul {
+            list-style: none;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        .info-box li {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-box li:before {
+            content: "✓";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .download-btn:active {
+            transform: translateY(0);
+        }
+        
+        .security-info {
+            background: #fffbf0;
+            border: 1px solid #ffd699;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .spinner {
+            display: none;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .status-message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            display: none;
+            font-weight: 600;
+        }
+        
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .file-size {
+            color: #999;
+            font-size: 13px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">📱</div>
+        
+        <h1>NextGen mParivahan</h1>
+        <p class="version">Version 2.3.5</p>
+        
+        <div class="info-box">
+            <ul>
+                <li>✨ New features & bug fixes</li>
+                <li>⚡ Performance improvements</li>
+                <li>🔒 Secure & verified download</li>
+            </ul>
+        </div>
+        
+        <div>
+            <button class="download-btn" id="downloadBtn" onclick="initiateDownload()">
+                <span id="btnText">📥 Download APK</span>
+                <div class="spinner" id="spinner"></div>
+            </button>
+            <p class="file-size">📦 11.5 MB</p>
+        </div>
+        
+        <div class="status-message" id="statusMessage"></div>
+        
+        <div class="security-info">
+            ⚠️ <strong>Important:</strong><br>
+            • Only 1 download per IP per 24 hours<br>
+            • Do NOT share direct links<br>
+            • Bot access is automatically blocked<br>
+            • Your download is being tracked
+        </div>
+    </div>
+    
+    <script>
+        async function initiateDownload() {
+            const btn = document.getElementById('downloadBtn');
+            const btnText = document.getElementById('btnText');
+            const spinner = document.getElementById('spinner');
+            const statusMessage = document.getElementById('statusMessage');
+            
+            // Disable button
+            btn.disabled = true;
+            btnText.style.display = 'none';
+            spinner.style.display = 'block';
+            statusMessage.style.display = 'none';
+            
+            try {
+                // Call API endpoint
+                const response = await fetch('/download');
+                const data = await response.json();
+                
+                if (response.ok) {
+                    // Success
+                    statusMessage.className = 'status-message status-success';
+                    statusMessage.textContent = '✅ ' + data.message;
+                    statusMessage.style.display = 'block';
+                    
+                    // Redirect after 1 second
+                    setTimeout(() => {
+                        window.location.href = data.download_url;
+                    }, 1000);
+                } else {
+                    // Error
+                    statusMessage.className = 'status-message status-error';
+                    statusMessage.textContent = data.error || 'Download failed!';
+                    statusMessage.style.display = 'block';
+                    
+                    // Re-enable button
+                    btn.disabled = false;
+                    btnText.style.display = 'block';
+                    spinner.style.display = 'none';
+                }
+            } catch (error) {
+                // Network error
+                statusMessage.className = 'status-message status-error';
+                statusMessage.textContent = '❌ Network error. Please try again.';
+                statusMessage.style.display = 'block';
+                
+                btn.disabled = false;
+                btnText.style.display = 'block';
+                spinner.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
